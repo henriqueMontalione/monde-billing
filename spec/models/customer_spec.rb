@@ -10,7 +10,7 @@ RSpec.describe Customer, type: :model do
     it 'validates presence of required fields' do
       customer = Customer.new
       expect(customer).not_to be_valid
-      expect(customer.errors.keys).to include(:name, :email, :billing_day, :payment_method_type)
+      expect(customer.errors.attribute_names).to include(:name, :email, :billing_day, :payment_method_type)
     end
     
     it 'validates email uniqueness' do
