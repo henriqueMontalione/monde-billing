@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MondeBilling</title>
+    <title>Monde Billing System</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <%= link_to "🏦 Monde Billing", root_path, class: "navbar-brand" %>
+        
+        <div class="navbar-nav ms-auto">
+          <%= link_to "Sidekiq", "/sidekiq", class: "nav-link", target: "_blank" %>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Flash messages -->
+    <% if notice %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= notice %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    <% end %>
+    
+    <% if alert %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= alert %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    <% end %>
+
+    <!-- Main content -->
+    <main class="py-4">
+      <%= yield %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light py-3 mt-5">
+      <div class="container text-center">
+        <small class="text-muted">
+          🚀 Powered by Rails 7.1.3 + Hotwire
+        </small>
+      </div>
+    </footer>
   </body>
 </html>
