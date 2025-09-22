@@ -30,7 +30,6 @@ class CustomersController < ApplicationController
         format.turbo_stream
         format.html { redirect_to @customer, notice: 'Cliente criado com sucesso.' }
       else
-        format.turbo_stream { render :new, status: :unprocessable_entity }
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -45,7 +44,6 @@ class CustomersController < ApplicationController
         format.turbo_stream
         format.html { redirect_to @customer, notice: 'Cliente atualizado com sucesso.' }
       else
-        format.turbo_stream { render :edit, status: :unprocessable_entity }
         format.html { render :edit, status: :unprocessable_entity }
       end
     end

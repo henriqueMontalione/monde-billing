@@ -1,0 +1,78 @@
+pt-BR:
+  activerecord:
+    models:
+      customer: "Cliente"
+      billing_record: "Registro de Faturamento"
+      user: "Usuário"
+    attributes:
+      customer:
+        name: "Nome"
+        email: "E-mail"
+        billing_day: "Dia de Faturamento"
+        payment_method_type: "Método de Pagamento"
+      billing_record:
+        amount: "Valor"
+        status: "Status"
+        processed_at: "Processado em"
+        month: "Mês"
+        year: "Ano"
+
+  helpers:
+    submit:
+      customer:
+        create: "Criar Cliente"
+        update: "Atualizar Cliente"
+
+  views:
+    pagination:
+      first: "Primeira"
+      last: "Última"
+      previous: "Anterior"
+      next: "Próxima"
+      truncate: "…"
+
+  customers:
+    index:
+      title: "Clientes"
+      new_customer: "Novo Cliente"
+      search_placeholder: "Buscar clientes..."
+      no_customers: "Nenhum cliente encontrado"
+    show:
+      title: "Cliente"
+      edit: "Editar"
+      back: "Voltar"
+    new:
+      title: "Novo Cliente"
+      back: "Voltar"
+    edit:
+      title: "Editar Cliente"
+      back: "Voltar"
+    form:
+      submit_create: "Criar Cliente"
+      submit_update: "Atualizar Cliente"
+
+  navigation:
+    customers: "Clientes"
+    dashboard: "Dashboard"
+    billing: "Faturamento"
+    logout: "Sair"
+    login: "Entrar"
+    profile: "Perfil"
+
+  actions:
+    show: "Visualizar"
+    edit: "Editar"
+    delete: "Excluir"
+    create: "Criar"
+    update: "Atualizar"
+    back: "Voltar"
+    save: "Salvar"
+    cancel: "Cancelar"
+    confirm: "Confirmar"
+
+  messages:
+    confirm_delete: "Tem certeza que deseja excluir este item?"
+    success:
+      created: "criado com sucesso."
+      updated: "atualizado com sucesso."
+      deleted: "excluído com sucesso."

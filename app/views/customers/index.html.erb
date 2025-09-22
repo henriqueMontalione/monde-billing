@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
-  <h1>Clientes</h1>
-  <%= link_to 'Novo Cliente', new_customer_path, class: 'btn btn-primary' %>
+  <h1><%= t('customers.index.title') %></h1>
+  <%= link_to t('customers.index.new_customer'), new_customer_path, class: 'btn btn-primary' %>
 </div>
 
 <div id="new_customer_form"></div>

@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card shadow">
+      <div class="card-body p-4">
+        <h2 class="card-title text-center mb-4">
+          📝 Criar Conta
+        </h2>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+                     html: { data: { turbo: false }, class: "needs-validation", novalidate: true }) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
+
+          <div class="mb-3">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                               class: "form-control", required: true %>
+            <div class="invalid-feedback">
+              Por favor, insira um e-mail válido.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password, "Senha", class: "form-label" %>
+            <% if @minimum_password_length %>
+              <small class="form-text text-muted">
+                (mínimo <%= @minimum_password_length %> caracteres)
+              </small>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password",
+                                 class: "form-control", required: true,
+                                 minlength: @minimum_password_length %>
+            <div class="invalid-feedback">
+              A senha deve ter pelo menos <%= @minimum_password_length || 6 %> caracteres.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password_confirmation, "Confirmar Senha", class: "form-label" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                                 class: "form-control", required: true %>
+            <div class="invalid-feedback">
+              As senhas devem coincidir.
+            </div>
+          </div>
+
+          <div class="d-grid">
+            <%= f.submit "Criar Conta", class: "btn btn-success btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "users/shared/links" %>

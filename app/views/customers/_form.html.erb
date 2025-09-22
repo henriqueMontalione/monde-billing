@@ -36,7 +36,7 @@
 
   <div class="actions">
     <%= form.submit class: "btn btn-primary",
-                    data: { form_target: "submit", original_text: form.object.persisted? ? "Atualizar Cliente" : "Criar Cliente" } %>
-    <%= link_to 'Cancelar', customers_path, class: "btn btn-secondary" %>
+                    data: { form_target: "submit" } %>
+    <%= link_to t('actions.cancel'), customers_path, class: "btn btn-secondary" %>
   </div>
 <% end %>

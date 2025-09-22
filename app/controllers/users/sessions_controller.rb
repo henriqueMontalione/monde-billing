@@ -1,6 +1,10 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :redirect_if_authenticated, only: [:new, :create]
 
+  def create
+    super
+  end
+
   protected
 
   def after_sign_in_path_for(resource)
