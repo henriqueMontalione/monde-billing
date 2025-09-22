@@ -1,0 +1,42 @@
+<%= form_with(model: customer, local: true, data: { controller: "form" }) do |form| %>
+  <% if customer.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(customer.errors.count, "erro") %> impediram o salvamento:</h4>
+      <ul class="mb-0">
+        <% customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :billing_day, "Dia de Cobrança", class: "form-label" %>
+    <%= form.number_field :billing_day, in: 1..31, class: "form-control" %>
+    <div class="form-text">Dia do mês para cobrança (1-31)</div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :payment_method_type, "Método de Pagamento", class: "form-label" %>
+    <%= form.select :payment_method_type,
+                    options_from_collection_for_select(Payments::PaymentService.options_for_select, :last, :first, customer.payment_method_type),
+                    { prompt: 'Selecione um método de pagamento' },
+                    { class: "form-select" } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary",
+                    data: { form_target: "submit", original_text: form.object.persisted? ? "Atualizar Cliente" : "Criar Cliente" } %>
+    <%= link_to 'Cancelar', customers_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

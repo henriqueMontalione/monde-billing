@@ -1,0 +1,21 @@
+<tr id="<%= dom_id(customer) %>">
+  <td><%= customer.name %></td>
+  <td><%= customer.email %></td>
+  <td><%= customer.billing_day %></td>
+  <td>
+    <% if customer.payment_method_type %>
+      <%= Payments::PaymentService.find_method(customer.payment_method_type)&.class&.display_name || customer.payment_method_type.humanize %>
+    <% else %>
+      <span class="text-muted">Não definido</span>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to 'Ver', customer, class: 'btn btn-sm btn-outline-primary' %>
+    <%= link_to 'Editar', edit_customer_path(customer), class: 'btn btn-sm btn-outline-secondary' %>
+    <%= link_to 'Excluir', customer, data: {
+                  turbo_method: :delete,
+                  turbo_confirm: 'Tem certeza?'
+                },
+                class: 'btn btn-sm btn-outline-danger' %>
+  </td>
+</tr>

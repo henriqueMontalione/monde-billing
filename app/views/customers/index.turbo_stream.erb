@@ -1,0 +1,24 @@
+<%= turbo_stream.replace 'customers_table_container' do %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Dia de Cobrança</th>
+          <th>Método de Pagamento</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="customers_tbody">
+        <% @customers.each do |customer| %>
+          <%= render 'customer_row', customer: customer %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <%= paginate @customers, remote: true %>
+  </div>
+<% end %>

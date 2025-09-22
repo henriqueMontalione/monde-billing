@@ -1,0 +1,7 @@
+<%= turbo_stream.replace dom_id(@customer) do %>
+  <%= render 'customer_row', customer: @customer %>
+<% end %>
+
+<%= turbo_stream.prepend 'flash' do %>
+  <%= render 'shared/flash', type: 'success', message: 'Cliente atualizado com sucesso.' %>
+<% end %>

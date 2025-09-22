@@ -17,28 +17,25 @@
         <%= link_to "🏦 Monde Billing", root_path, class: "navbar-brand" %>
         
         <div class="navbar-nav ms-auto">
+          <%= link_to "Clientes", customers_path, class: "nav-link" %>
           <%= link_to "Sidekiq", "/sidekiq", class: "nav-link", target: "_blank" %>
         </div>
       </div>
     </nav>
 
     <!-- Flash messages -->
-    <% if notice %>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <%= notice %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-      </div>
-    <% end %>
-    
-    <% if alert %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <%= alert %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-      </div>
-    <% end %>
+    <div id="flash">
+      <% if notice %>
+        <%= render 'shared/flash', type: 'success', message: notice %>
+      <% end %>
+
+      <% if alert %>
+        <%= render 'shared/flash', type: 'danger', message: alert %>
+      <% end %>
+    </div>
 
     <!-- Main content -->
-    <main class="py-4">
+    <main class="container py-4">
       <%= yield %>
     </main>
 

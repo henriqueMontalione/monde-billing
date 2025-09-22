@@ -1,0 +1,5 @@
+<%= turbo_stream.remove dom_id(@customer) %>
+
+<%= turbo_stream.prepend 'flash' do %>
+  <%= render 'shared/flash', type: 'success', message: 'Cliente removido com sucesso.' %>
+<% end %>

@@ -1,0 +1,26 @@
+<h1><%= @customer.name %></h1>
+
+<div class="card">
+  <div class="card-body">
+    <p><strong>Email:</strong> <%= @customer.email %></p>
+    <p><strong>Dia de Cobrança:</strong> <%= @customer.billing_day %></p>
+    <p><strong>Método de Pagamento:</strong>
+      <% if @customer.payment_method_type %>
+        <%= Payments::PaymentService.find_method(@customer.payment_method_type)&.class&.display_name || @customer.payment_method_type.humanize %>
+      <% else %>
+        <span class="text-muted">Não definido</span>
+      <% end %>
+    </p>
+    <p><strong>Data de Criação:</strong> <%= @customer.created_at.strftime('%d/%m/%Y às %H:%M') %></p>
+  </div>
+</div>
+
+<div class="mt-3">
+  <%= link_to 'Editar', edit_customer_path(@customer), class: 'btn btn-primary' %>
+  <%= link_to 'Voltar', customers_path, class: 'btn btn-secondary' %>
+  <%= link_to 'Excluir', @customer, data: {
+                turbo_method: :delete,
+                turbo_confirm: 'Tem certeza que deseja excluir este cliente?'
+              },
+              class: 'btn btn-danger' %>
+</div>
