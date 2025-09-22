@@ -31,8 +31,9 @@ RSpec.describe Payments::PaymentService do
       
       expect(options).to be_a(Array)
       expect(options).to include(['Boleto', 'boleto'])
-      expect(options).to include(['Pix', 'pix'])
+      expect(options).to include(['Cartão de Crédito', 'credit_card'])
       expect(options).to include(['Depósito Bancário', 'deposito'])
+      expect(options).to include(['Pix', 'pix'])
       expect(options.size).to eq(4)
     end
   end

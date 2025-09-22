@@ -19,7 +19,11 @@ module Payments
           charged_at: Time.current
         }
       end
-      
+
+      def self.display_name
+        "Cartão de Crédito"
+      end
+
       private
       
       def generate_authorization_code

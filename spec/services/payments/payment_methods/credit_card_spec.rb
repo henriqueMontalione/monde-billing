@@ -43,7 +43,7 @@ RSpec.describe Payments::PaymentMethods::CreditCard do
   
   describe '.display_name' do
     it 'returns correct display name' do
-      expect(described_class.display_name).to eq('Creditcard')
+      expect(described_class.display_name).to eq('Cartão de Crédito')
     end
   end
   
