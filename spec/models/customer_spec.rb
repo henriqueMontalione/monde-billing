@@ -18,7 +18,7 @@ RSpec.describe Customer, type: :model do
       duplicate_customer = build(:customer, email: 'test@example.com')
       
       expect(duplicate_customer).not_to be_valid
-      expect(duplicate_customer.errors[:email]).to include('has already been taken')
+      expect(duplicate_customer.errors[:email]).to include('já está em uso')
     end
     
     it 'validates billing_day range' do
