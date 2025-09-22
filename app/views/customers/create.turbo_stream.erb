@@ -1,11 +1,7 @@
-<% if params[:page].blank? || params[:page] == '1' %>
-  <%= turbo_stream.append 'customers_tbody' do %>
-    <%= render 'customer_row', customer: @customer %>
-  <% end %>
-<% end %>
-
-<%= turbo_stream.update 'new_customer_form', '' %>
-
 <%= turbo_stream.prepend 'flash' do %>
   <%= render 'shared/flash', type: 'success', message: 'Cliente criado com sucesso.' %>
 <% end %>
+
+<turbo-stream action="redirect" target="<%= customer_path(@customer) %>">
+  <template></template>
+</turbo-stream>

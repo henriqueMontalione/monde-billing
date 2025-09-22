@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "/customers", type: :request do
+  let(:user) { create(:user) }
+
+  before do
+    sign_in user
+  end
   describe "GET /index" do
     it "renders a successful response" do
       Customer.create!(name: "João Silva", email: "joao@test.com", billing_day: 15, payment_method_type: "boleto")

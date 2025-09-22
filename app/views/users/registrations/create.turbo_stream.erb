@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend 'flash' do %>
+  <%= render 'shared/flash', type: 'notice', message: 'Bem-vindo! Você se registrou com sucesso.' %>
+<% end %>
+
+<turbo-stream action="redirect" target="<%= root_path %>">
+  <template></template>
+</turbo-stream>

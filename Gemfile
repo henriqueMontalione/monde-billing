@@ -41,6 +41,8 @@ gem 'bootstrap', '~> 5.3'
 gem 'sassc-rails', '~> 2.1'
 gem 'simplecov', require: false, group: :test
 gem 'kaminari', '~> 1.2'
+gem 'devise', '~> 4.9'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 6.0'

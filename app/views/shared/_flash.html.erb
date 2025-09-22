@@ -1,4 +1,16 @@
-<div class="alert alert-<%= type == 'success' ? 'success' : 'danger' %> alert-dismissible fade show"
+<%
+  alert_class = case type
+                when 'notice', 'success'
+                  'success'
+                when 'alert', 'error'
+                  'danger'
+                when 'warning'
+                  'warning'
+                else
+                  'info'
+                end
+%>
+<div class="alert alert-<%= alert_class %> alert-dismissible fade show"
      role="alert"
      data-controller="flash">
   <%= message %>
