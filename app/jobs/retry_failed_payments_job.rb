@@ -54,12 +54,13 @@ class RetryFailedPaymentsJob < ApplicationJob
 
   def process_retry_payment(record)
     customer = record.customer
-    payment_method = Payments::PaymentService.get_payment_method(customer.payment_method_type)
+    payment_method = Payments::PaymentService.find_method(customer.payment_method_type)
 
-    result = payment_method.process_payment(
-      customer: customer,
-      amount: record.amount
-    )
+    unless payment_method
+      raise "Payment method '#{customer.payment_method_type}' not found for customer #{customer.name}"
+    end
+
+    result = payment_method.charge(customer, record.amount)
 
     {
       success: result[:success],
